@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<style>
+input[type=text], select {  width: 100%;
+  padding: 12px 20px;  margin: 8px 0;
+  display: inline-block;  border: 1px solid #ccc;
+  border-radius: 4px;  box-sizing: border-box;
+}
+
+input[type=submit] {  width: 100%;  background-color: lightblue;  color: white;  padding: 14px 20px;  margin: 8px 0;  border: none;  border-radius: 4px;cursor: pointer;}
+
+input[type=submit]:hover {background-color:lightblue;}
+
+div {border-radius: 5px;background-color: whitesmoke; padding: 20px;}
+</style>
+<body><div><img src="logo-gts.png" height="100px" width="200px">
+<div style="position: absolute;left: 400px;top: 10px;"><font style="font-size: 100px;" face="italic" color="lightgreen">WELCOME</font></div>
+</div>
+
+
+<div>
+  <form mathod="POST"  name="google-sheet">
+    <label for="fname">Employee</label>
+    <input type="text" id="fname" name="Employee" placeholder="Your name..">
+
+    <label for="lname">Employee ID</label>
+    <input type="text" id="lname" name="Employee ID" placeholder="Your Employee ID..">
+
+    <label for="Event">Event</label>
+    <select id="Event" name="Event">
+        <option value="HOLI">HOLI</option>
+        <option value="DIWALI">DIWALI</option>
+        <option value="other">Other</option>
+    </select>
+
+    <label for="Gift">Gift</label>
+    <select id="Gift" name="Gift">
+        <option value="phone">PHONE</option>
+        <option value="Laptop">Laptop</option>
+        <option value="other">Other</option>
+    </select>
+    <label for="Date">Date</label><br>
+    <input type="date" id="Date" name="Date" placeholder="Date">
+    
+  
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+
+
+<script>
+            const scriptURL ='https://script.google.com/macros/s/AKfycbzX6qtSDiw1pxZHTV164RaP25qXHgQ_00kSgSw4996Gu8fGfPkF4UhyE-2f7fFaW_oC/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+                .catch(error => console.error('Error!', error.message))
+            })
+            </script>
+</body>
+</html>
+
+
